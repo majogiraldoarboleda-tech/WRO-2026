@@ -12,18 +12,18 @@ motor_izquierdo = Motor(Port.B)
 motor_derecho = Motor(Port.C)
 motor_llantaizq = Motor(Port.A)
 motor_llantader = Motor(Port.D)
-garra = DriveBase(motor_izquierdo, motor_derecho, wheel_diameter=56, axle_track=114)
+
 #funciones 
 def garra(grados):
-    motor_izquierdo.run_angle(500, grados, then=Stop.HOLD, wait=True)
-    motor_derecho.run_angle(500, grados, then=Stop.HOLD, wait=False)
+    motor_izquierdo.run_angle(500, grados, then=stop.HOLD, wait=False)
+    motor_derecho.run_angle(500, grados, then=stop.HOLD, wait=True)
 
 def llantas(velocidad, grados):
-    motor_llantaizq.run_angle(velocidad, grados, then=Stop.HOLD, wait=True)
-    motor_llantader.run_angle(velocidad, grados, then=Stop.HOLD, wait=False)
+    motor_llantaizq.run_angle(velocidad, grados, then=stop.HOLD, wait=False)
+    motor_llantader.run_angle(velocidad, grados, then=stop.HOLD, wait=True)
 
 
-garra.settings(straight_speed=12000, straight_acceleration=1000000)
+
 # Sonido de inicio
 
 
@@ -35,13 +35,7 @@ garra.settings(straight_speed=12000, straight_acceleration=1000000)
 
 
 
-llantas = DriveBase(motor_llantaizq, motor_llantader, wheel_diameter=56, axle_track=114)
-llantas.settings(straight_speed=500, straight_acceleration=1000000)
-# Sonido de inicio
-ev3.speaker.beep()
-# Initialize the EV3 brick.
 
-llantas.straight(1200)
 ev3.speaker.beep()
 
 # Run the motor up to 500 degrees per second. To a target angle of 90 degrees.
@@ -50,9 +44,7 @@ ev3.speaker.beep()
 
 
 
-llantas = DriveBase(motor_llantaizq, motor_llantader, wheel_diameter=56, axle_track=114)
-llantas.settings(straight_speed=500, straight_acceleration=1000000)
-llantas.straight(-1200)
+
 # Sonido de inicio
 
 
@@ -75,8 +67,9 @@ llantas.straight(-1200)
 while True:
     garra(-1200)
     llantas(600,1200)
-     garra(1200)
+    garra(1200)
     llantas(600, -1200)
     ev3.speaker.beep()
 
+    
     
