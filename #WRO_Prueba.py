@@ -79,4 +79,4 @@ while True:
     llantas(600, -1200)
     ev3.speaker.beep()
 
-    holaaaa
+    
